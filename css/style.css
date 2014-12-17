@@ -15,7 +15,7 @@
 h1 {
 
   font-size: 40px;
-  color: #F5A623;
+  /*color: #F5A623;*/
   color: #f18383;
   line-height: 48px;
   display: inline;
@@ -32,7 +32,7 @@ h2 {
 h3 {
   font-style: italic;
   font-size: 20px;
-  color: #000000;
+  /*color: #000000;*/
   color: #70585a;
   line-height: 22px;
 }
@@ -70,13 +70,13 @@ h2, h3, h4, h5 {
 
 p {
   font-size: 14px;
-  color: #333333;
+  /*color: #333333;*/
   color: #70585a;
   line-height: 21px;
 }
 
 a {
-  color: #1199C3;
+  /*color: #1199C3;*/
   color: #D44B4B;
   text-decoration: none;
   margin-top: 10px;
@@ -87,12 +87,12 @@ a {
   font-style: italic;
   font-size: 18px;
   color: #F3F3F3;
-  color: #70585a;
+  /*color: #70585a;*/
   line-height: 28px;
 }
 
 #skillsH3 {
-  color: #F5AE23;
+  /*color: #F5AE23;*/
   color: #f18383;
   display: none;
 }
@@ -117,7 +117,7 @@ a {
 .white-text {
   font-weight: bold;
   color: #FFFFFF;
-  color: #70585a;
+  /*color: #70585a;*/
 }
 
 .gray {
@@ -131,7 +131,8 @@ a {
 }
 
 .pinkiesh {
-  background-color: #f5f2ee;
+  /*background-color: #f5f2ee;*/
+  background-color: #EFEAE1;
 }
 
 .pinky {
@@ -154,10 +155,15 @@ a {
   background-color: #94C1B4;
 }
 
+.purple {
+    background-color: #584B4F;
+}
+
 /* TODO: Replace with image later */
 #header {
    /*background-color: #484848;*/
-  background-color: #f5f2ee;
+  /*background-color: #f5f2ee;*/
+  background-color: #584B4F;
 }
 
 .flex-box {
@@ -176,7 +182,6 @@ a {
 ul {
   list-style-type: none;
 }
-
 
 .biopic {
   float: left;
