@@ -15,13 +15,14 @@ replace the %data% placeholder text you see in them.
 var HTMLheaderName = "<h1 id='name'>%data%</h1>";
 var HTMLheaderRole = "<span>%data%</span><hr/>";
 
-var HTMLcontactGeneric = "<li class='flex-item'><span class='orange-text'>%contact%</span><span class='white-text'>%data%</span></li>";
-var HTMLmobile = "<li class='flex-item'><span class='orange-text'>mobile</span><span class='white-text'>%data%</span></li>";
-var HTMLemail = "<li class='flex-item'><span class='orange-text'>email</span><span class='white-text'>%data%</span></li>";
-var HTMLtwitter = "<li class='flex-item'><span class='orange-text'>twitter</span><span class='white-text'>%data%</span></li>";
-var HTMLgithub = "<li class='flex-item'><span class='orange-text'>github</span><span class='white-text'>%data%</span></li>";
-var HTMLblog = "<li class='flex-item'><span class='orange-text'>blog</span><span class='white-text'>%data%</span></li>";
-var HTMLlocation = "<li class='flex-item'><span class='orange-text'>location</span><span class='white-text'>%data%</span></li>";
+var HTMLcontactGeneric = "<li class='flex-item'><span class='pinky-text'>%contact%</span><span class='white-text'>%data%</span></li>";
+var HTMLmobile = "<li class='flex-item'><span class='pinky-text'>mobile</span><span class='white-text'>%data%</span></li>";
+var HTMLemail = "<li class='flex-item'><span class='pinky-text'>email</span><span class='white-text'>%data%</span></li>";
+//var HTMLtwitter = "<li class='flex-item'><span class='orange-text'>twitter</span><span class='white-text'>%data%</span></li>";
+var HTMLgPlus = "<li class='flex-item'><span class='pinky-text'>gPlus</span><span class='white-text'>%data%</span></li>";
+var HTMLgithub = "<li class='flex-item'><span class='pinky-text'>github</span><span class='white-text'>%data%</span></li>";
+var HTMLblog = "<li class='flex-item'><span class='pinky-text'>blog</span><span class='white-text'>%data%</span></li>";
+var HTMLlocation = "<li class='flex-item'><span class='pinky-text'>location</span><span class='white-text'>%data%</span></li>";
 
 var HTMLbioPic = "<img src='%data%' class='biopic'>";
 var HTMLWelcomeMsg = "<span class='welcome-message'>%data%</span>";
@@ -44,10 +45,10 @@ var HTMLprojectImage = "<img src='%data%'>";
 
 var HTMLschoolStart = "<div class='education-entry'></div>";
 var HTMLschoolName = "<a href='#'>%data%";
-var HTMLschoolDegree = " -- %data%</a>";
+var HTMLschoolDegree = " - %data%</a>";
 var HTMLschoolDates = "<div class='date-text'>%data%</div>";
 var HTMLschoolLocation = "<div class='location-text'>%data%</div>";
-var HTMLschoolMajor = "<em><br>Major: %data%</em>"
+var HTMLschoolMajor = "<em><br>Major : %data%</em>"
 
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
 var HTMLonlineTitle = "<a href='#'>%data%";
@@ -62,7 +63,9 @@ var googleMap = "<div id='map'></div>";
 
 
 /*
-The International Name challenge in Lesson 2 where you'll create a function that will need this helper code to run. Don't delete! It hooks up your code to the button you'll be appending.
+The International Name challenge in Lesson 2 where you'll create a function 
+that will need this helper code to run. Don't delete! It hooks up your code 
+to the button you'll be appending.
 */
 $(document).ready(function() {
   $('button').click(function() {
@@ -90,6 +93,10 @@ function logClicks(x,y) {
 
 $(document).click(function(loc) {
   // your code goes here!
+  var x,y;
+  x = loc.pageX;
+  y = loc.pageY;
+  logClicks(x,y);
 });
 
 
@@ -126,7 +133,7 @@ function initializeMap() {
   function locationFinder() {
     
     // initializes an empty array
-    var locations = [];
+    var locations = ["Mexico City","Guadalajara","Los Cabos"];
 
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
@@ -154,22 +161,22 @@ function initializeMap() {
   function createMapMarker(placeData) {
 
     // The next lines save location data from the search result object to local variables
-    //var lat = placeData.geometry.location.k;  // latitude from the place service
-    var lat = 19.3534011;
-    //var lon = placeData.geometry.location.B;  // longitude from the place service
-    var lon = -99.118336;
+    var lat = placeData.geometry.location.k;  // latitude from the place service
+    //var lat = 19.3534011;
+    var lon = placeData.geometry.location.B;  // longitude from the place service
+    //var lon = -99.118336;
 
-    var myLatlng = new google.maps.LatLng(lat,lon);
+    //var myLatlng = new google.maps.LatLng(lat,lon);
     
-    //var name = placeData.formatted_address;   // name of the place from the place service
-    var name = "UNITEC Campus Sur";
+    var name = placeData.formatted_address;   // name of the place from the place service
+    //var name = "UNITEC Campus Sur";
     var bounds = window.mapBounds;            // current boundaries of the map window
 
     // marker is an object with additional data about the pin for a single location
     var marker = new google.maps.Marker({
       map: map,
-      //position: placeData.geometry.location,
-      position: myLatlng,
+      position: placeData.geometry.location,
+      //position: myLatlng,
       title: name
     });
     
